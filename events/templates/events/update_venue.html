@@ -1,0 +1,23 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="shadow p-4 md-5 bg-body rounded">
+    <h3>Update Venue </h3><br>
+    <form action='' method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <input type="submit" value="Submit" class="btn btn-info">
+    </form>
+{% else %}
+
+    <div class="alert alert-danger" role="alert">
+        Sorry! You Must Be Logged In To View This Page...
+    </div>
+    <a href="{% url 'login' %}">Login Here</a>
+
+{% endif %}
+</div><br><br>
+{% endblock %}

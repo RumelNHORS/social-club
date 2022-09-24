@@ -1,0 +1,39 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+<div class="shadow p-4 md-5 bg-body rounded">
+        {% if searched %}
+        <h3>You Search For {{ searched }}</h3><br>
+
+        {% for venue in venues %}
+
+    <div class="card">
+      <div class="card-header">
+        Venue
+      </div>
+      <div class="card-body">
+            <h5 class="card-title">{{ venue }}</h5>
+            <p class="card-text"> 
+
+        <ul>
+            <li>{{ venue.address }}</li>
+            <li>{{ venue.Zip_code }}</li>
+            <li>{{ venue.phone }}</li>
+            <li>{{ venue.email_address }}</li>
+            <li>Owner ID : {{ venue.owner }}</li>
+            <li><a href="{{ venue.web }}">{{ venue.web }}</a></li>
+        </ul>
+            </p>
+      </div>
+    </div><br>
+
+
+
+        {% endfor %}
+        {% else %}
+        <h3>Hey! You Forgot To Search For a Venue..</h3>
+
+        {% endif %}
+
+</div><br><br>
+{% endblock %}

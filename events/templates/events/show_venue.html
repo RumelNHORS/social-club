@@ -1,0 +1,42 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+<div class="shadow p-4 md-5 bg-body rounded">  
+
+    <div class="card">
+      <div class="card-header">
+        Venue
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ venue }}</h5>
+        <p class="card-text"> 
+
+    <ul>
+        <li>{{ venue.address }}</li>
+        <li>{{ venue.Zip_code }}</li>
+        <li>{{ venue.phone }}</li>
+        <li>{{ venue.email_address }}</li>
+        <li>Owner : {{ venue_owner }}</li>
+        <li>Owner's Email : {{ venue_owner.email }}</li>
+        <li><a href="{{ venue.web }}">{{ venue.web }}</a></li>
+    </ul>
+
+      {% if venue.venue_image %}
+        <img src="{{ venue.venue_image.url }}" width="500">
+      {% endif %}
+
+        </p>
+      </div>
+
+    </div><br>
+    <h4>Events At This Venue...</h4>
+    {% if events %}
+
+      {% for event in events %}
+        <a href="{% url 'show-event' event.id %}">{{ event }}</a><br>
+      {% endfor %}
+    {% else %}
+    No Events Scheduled At This Time.
+    {% endif %}
+</div><br><br>
+{% endblock %}
